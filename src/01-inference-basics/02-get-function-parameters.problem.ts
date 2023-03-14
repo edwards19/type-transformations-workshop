@@ -11,7 +11,11 @@ const makeQuery = (
   },
 ) => {};
 
-type MakeQueryParameters = unknown;
+type MakeQueryParameters = Parameters<typeof makeQuery>;
+
+// if we wanted to extract only the second paramater we would do something like this since it's a touple
+
+type MakeQueryParametersSecondArg = MakeQueryParameters[1]; //index type
 
 type tests = [
   Expect<

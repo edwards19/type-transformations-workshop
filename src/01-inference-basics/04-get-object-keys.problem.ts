@@ -12,6 +12,10 @@ const testingFrameworks = {
   },
 };
 
-type TestingFramework = unknown;
+// keyof only operates on types, not on runtime things
+
+type TestingFramework = keyof typeof testingFrameworks
 
 type tests = [Expect<Equal<TestingFramework, "vitest" | "jest" | "mocha">>];
+
+console.log(Object.entries(testingFrameworks));

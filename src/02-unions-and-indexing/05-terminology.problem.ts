@@ -8,6 +8,10 @@
  * Which is which?
  */
 
+//discriminated union
+
+//a discriminated union has a common key or a common aspect that is the discriminator
+
 type A =
   | {
       type: "a";
@@ -22,7 +26,17 @@ type A =
       c: string;
     };
 
+const getUnion = (result: A) => {
+  if (result.type === 'b') {
+    return result.b
+  }
+}
+
+//union    
+
 type B = "a" | "b" | "c";
+
+//enum
 
 enum C {
   A = "a",
