@@ -6,8 +6,10 @@ interface Attributes {
   age: number;
 }
 
+const number = 1 as any; 
+
 type AttributeGetters = {
-  [K in keyof Attributes]: () => Attributes[K];
+  [K in keyof Attributes as `get${Capitalize<K>}`]: () => Attributes[K];
 };
 
 type tests = [

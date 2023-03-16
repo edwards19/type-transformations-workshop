@@ -1,9 +1,23 @@
 import { Equal, Expect } from "../helpers/type-utils";
 
-type GetParametersAndReturnType<T> = {
+type GetParametersAndReturnType<T extends (...args: any) => any> = {
   params: Parameters<T>;
   returnValue: ReturnType<T>;
 };
+
+const randomFunc = (
+  product: string,
+  bestDue: number
+): { product: string; bestDue: number } => {
+  return {
+    product,
+    bestDue,
+  };
+};
+
+type functionInfoTypes = GetParametersAndReturnType<typeof randomFunc>
+
+randomFunc('cheese', 13)
 
 type tests = [
   Expect<
